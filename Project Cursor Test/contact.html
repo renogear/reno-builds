@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - PropGrid</title>
+  <meta name="description" content="Contact PropGrid for questions, feedback, or support. We're here to help with your real estate investment needs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3b82f6'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    
+    /* Form Styles */
+    .form-input, .form-textarea, .form-select {
+      display: block;
+      width: 100%;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+      padding: 0.875rem 1rem;
+      color: #111827;
+      background-color: white;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+    
+    .form-error { 
+      border-color: #ef4444;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
+    
+    /* Contact Card Hover Effects */
+    .contact-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    /* Success Animation */
+    .success-animation {
+      animation: successPulse 0.6s ease-out;
+    }
+    
+    @keyframes successPulse {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Loading Spinner */
+    .loading-spinner {
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Logo minimum size */
+    .logo-min-size {
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-40 transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-3">
+          <a href="/" class="flex items-center space-x-3 group focus-visible" aria-label="PropGrid Home">
+                            <img src="2zeilN5FnQ4boMLVI0qnMaQk248.svg" alt="PropGrid logo" class="w-10 h-10 object-contain logo-min-size"/>
+            <span class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">PropGrid</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8" role="menubar">
+          <a href="index.html#how-it-works" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">How It Works</a>
+          <a href="index.html#markets" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Markets</a>
+          <a href="index.html#pricing" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Pricing</a>
+          <a href="faq.html" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">FAQ</a>
+          <a href="contact.html" class="text-primary font-semibold transition-colors focus-visible" role="menuitem">Contact</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="index.html#signup" class="bg-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 focus-visible">
+            Get Started
+          </a>
+          <button class="md:hidden focus-visible" id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+            <i class="fas fa-bars text-gray-600 text-xl" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu" role="menu" aria-hidden="true">
+      <div class="px-4 py-4 space-y-4">
+        <a href="index.html#how-it-works" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">How It Works</a>
+        <a href="index.html#markets" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Markets</a>
+        <a href="index.html#pricing" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Pricing</a>
+        <a href="faq.html" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">FAQ</a>
+        <a href="contact.html" class="block text-primary font-semibold transition-colors focus-visible" role="menuitem">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="mb-8">
+                    <img src="2zeilN5FnQ4boMLVI0qnMaQk248.svg" alt="PropGrid logo" class="mx-auto mb-6 w-16 h-16 object-contain"/>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Get in Touch</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Have questions about PropGrid? Need help with your investment strategy? We're here to help you succeed in real estate investing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="max-w-7xl mx-auto">
+      <!-- Contact Methods Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Email Support -->
+        <div class="contact-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-envelope text-blue-600 text-2xl" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Email Support</h3>
+          <p class="text-gray-600 mb-4">Get detailed responses to your questions within 24 hours</p>
+          <a href="mailto:support@propgrid.com" class="inline-flex items-center text-primary font-semibold hover:underline">
+            support@propgrid.com
+            <i class="fas fa-external-link-alt ml-2 text-sm" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Phone Support -->
+        <div class="contact-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-phone text-green-600 text-2xl" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Phone Support</h3>
+          <p class="text-gray-600 mb-4">Speak directly with our investment specialists</p>
+          <a href="tel:+15551234567" class="inline-flex items-center text-primary font-semibold hover:underline">
+            +1 (555) 123-4567
+            <i class="fas fa-phone ml-2 text-sm" aria-hidden="true"></i>
+          </a>
+          <p class="text-sm text-gray-500 mt-2">Mon-Fri 9AM-6PM EST</p>
+        </div>
+
+        <!-- Live Chat -->
+        <div class="contact-card bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-comments text-purple-600 text-2xl" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Live Chat</h3>
+          <p class="text-gray-600 mb-4">Get instant answers to quick questions</p>
+                      <button class="inline-flex items-center text-primary font-semibold hover:underline" id="live-chat-btn" aria-label="Start live chat support">
+            Start Chat
+            <i class="fas fa-arrow-right ml-2 text-sm" aria-hidden="true"></i>
+          </button>
+          <p class="text-sm text-gray-500 mt-2">Available 24/7</p>
+        </div>
+      </div>
+
+      <!-- Contact Form Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-12">
+            <div class="mb-8">
+              <h2 class="text-3xl font-bold text-gray-900 mb-3">Send us a Message</h2>
+              <p class="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+
+            <form id="contact-form" class="space-y-6" autocomplete="off" novalidate aria-label="Contact form">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="first-name" class="block text-sm font-semibold text-gray-700 mb-2">First Name <span class="text-red-500">*</span></label>
+                                      <input type="text" name="firstName" id="first-name" required class="form-input" placeholder="Enter your first name" aria-required="true">
+                    <div class="error-message hidden text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+                </div>
+                <div>
+                  <label for="last-name" class="block text-sm font-semibold text-gray-700 mb-2">Last Name <span class="text-red-500">*</span></label>
+                                      <input type="text" name="lastName" id="last-name" required class="form-input" placeholder="Enter your last name" aria-required="true">
+                    <div class="error-message hidden text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address <span class="text-red-500">*</span></label>
+                  <input type="email" name="email" id="email" required class="form-input" placeholder="your.email@example.com" aria-required="true">
+                  <div class="error-message hidden text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" class="form-input" placeholder="(555) 123-4567">
+                  <p class="text-sm text-gray-500 mt-1">Optional - for urgent matters</p>
+                </div>
+              </div>
+
+              <div>
+                <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject <span class="text-red-500">*</span></label>
+                <select name="subject" id="subject" required class="form-select" aria-required="true">
+                  <option value="">Select a topic</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="technical">Technical Support</option>
+                  <option value="billing">Billing & Subscription</option>
+                  <option value="partnership">Partnership Opportunities</option>
+                  <option value="feedback">Feedback & Suggestions</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="error-message hidden text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message <span class="text-red-500">*</span></label>
+                <textarea name="message" id="message" rows="6" required class="form-textarea" placeholder="Tell us more about your question or how we can help you..." aria-required="true"></textarea>
+                <div class="error-message hidden text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                <label for="newsletter" class="text-sm text-gray-700">
+                  I'd like to receive updates about new features and investment opportunities
+                </label>
+              </div>
+
+              <button type="submit" id="submit-btn" class="w-full bg-primary text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-0.5" aria-label="Send contact form message">
+                <span class="flex items-center justify-center">
+                  <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                  Send Message
+                </span>
+              </button>
+
+              <p class="text-xs text-gray-500 text-center">
+                By submitting this form, you agree to our 
+                                        <a href="/privacy.html" class="text-primary hover:underline">Privacy Policy</a> and
+                        <a href="/terms.html" class="text-primary hover:underline">Terms of Service</a>
+              </p>
+            </form>
+
+            <!-- Success State -->
+            <div id="contact-success" class="hidden text-center py-12">
+              <div class="success-animation">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <i class="fas fa-check text-green-600 text-3xl" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Message Sent Successfully!</h3>
+                <p class="text-gray-600 mb-6">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                <div class="bg-gray-50 rounded-xl p-6 mb-8">
+                  <h4 class="font-semibold text-gray-900 mb-2">What happens next?</h4>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    <li>• You'll receive a confirmation email</li>
+                    <li>• Our team will review your message</li>
+                    <li>• We'll respond with a detailed answer</li>
+                  </ul>
+                </div>
+                <a href="index.html" class="inline-flex items-center text-primary font-semibold hover:underline">
+                  <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i>Back to Home
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Information Sidebar -->
+        <div class="space-y-8">
+          <!-- Quick Support -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 border border-blue-200">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-question-circle text-white text-xl" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">Quick Support</h3>
+            </div>
+            <p class="text-gray-700 mb-6">Looking for quick answers? Check out our comprehensive FAQ section for common questions and solutions.</p>
+            <a href="faq.html" class="inline-flex items-center w-full justify-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl hover:bg-blue-700 transition-all duration-300">
+              <i class="fas fa-search mr-2" aria-hidden="true"></i>
+              Browse FAQ
+            </a>
+          </div>
+
+          <!-- Office Hours -->
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+            <h3 class="text-xl font-bold text-gray-900 mb-6">Office Hours</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Monday - Friday</span>
+                <span class="font-semibold text-gray-900">9:00 AM - 6:00 PM EST</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Saturday</span>
+                <span class="font-semibold text-gray-900">10:00 AM - 4:00 PM EST</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Sunday</span>
+                <span class="font-semibold text-gray-900">Closed</span>
+              </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-clock mr-2" aria-hidden="true"></i>
+                Emergency support available 24/7 for Pro subscribers
+              </p>
+            </div>
+          </div>
+
+          <!-- Response Times -->
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+            <h3 class="text-xl font-bold text-gray-900 mb-6">Response Times</h3>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-600">Email Support</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">24 hours</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-600">Phone Support</span>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Immediate</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-600">Live Chat</span>
+                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Instant</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 py-12 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-center gap-4">
+        <a href="/" class="flex items-center space-x-3 group focus-visible" aria-label="PropGrid Home">
+                      <img src="2zeilN5FnQ4boMLVI0qnMaQk248.svg" alt="PropGrid logo" class="w-10 h-10 object-contain"/>
+        </a>
+        <p class="text-sm text-gray-500">&copy; 2024 PropGrid. All rights reserved.</p>
+        <div class="flex items-center space-x-6 text-sm text-gray-500">
+                          <a href="/privacy.html" class="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="/terms.html" class="hover:text-primary transition-colors">Terms of Service</a>
+          <a href="mailto:support@propgrid.com" class="hover:text-primary transition-colors">support@propgrid.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced form validation and submission
+    class ContactForm {
+      constructor() {
+        this.form = document.getElementById('contact-form');
+        this.submitBtn = document.getElementById('submit-btn');
+        this.successDiv = document.getElementById('contact-success');
+        this.init();
+      }
+
+      init() {
+        this.setupValidation();
+        this.setupSubmission();
+      }
+
+      setupValidation() {
+        // Real-time validation
+        this.form.querySelectorAll('input, textarea, select').forEach(field => {
+          field.addEventListener('blur', () => this.validateField(field));
+          field.addEventListener('input', () => this.clearFieldError(field));
+        });
+      }
+
+      validateField(field) {
+        const value = field.value.trim();
+        const isRequired = field.hasAttribute('required');
+        const type = field.type;
+
+        this.clearFieldError(field);
+
+        if (isRequired && !value) {
+          this.showFieldError(field, 'This field is required');
+          return false;
+        }
+
+        if (type === 'email' && value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            this.showFieldError(field, 'Please enter a valid email address');
+            return false;
+          }
+        }
+
+        if (type === 'tel' && value) {
+          const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+          const cleanPhone = value.replace(/[\s\-\(\)]/g, '');
+          if (!phoneRegex.test(cleanPhone)) {
+            this.showFieldError(field, 'Please enter a valid phone number');
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      showFieldError(field, message) {
+        const errorDiv = field.parentElement.querySelector('.error-message');
+        if (errorDiv) {
+          errorDiv.textContent = message;
+          errorDiv.classList.remove('hidden');
+          field.classList.add('form-error');
+        }
+      }
+
+      clearFieldError(field) {
+        const errorDiv = field.parentElement.querySelector('.error-message');
+        if (errorDiv) {
+          errorDiv.classList.add('hidden');
+          field.classList.remove('form-error');
+        }
+      }
+
+      setupSubmission() {
+        this.form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleSubmission();
+        });
+      }
+
+      async handleSubmission() {
+        // Validate all fields
+        const fields = this.form.querySelectorAll('input, textarea, select');
+        let isValid = true;
+
+        fields.forEach(field => {
+          if (!this.validateField(field)) {
+            isValid = false;
+          }
+        });
+
+        if (!isValid) return;
+
+        // Show loading state
+        this.submitBtn.disabled = true;
+        this.submitBtn.innerHTML = '<i class="fas fa-spinner loading-spinner mr-2" aria-hidden="true"></i>Sending...';
+
+        try {
+          // Simulate API call
+          await new Promise(resolve => setTimeout(resolve, 2000));
+
+          // Show success state
+          this.form.classList.add('hidden');
+          this.successDiv.classList.remove('hidden');
+
+          // Form data collected successfully (in production, send to backend)
+          const formData = new FormData(this.form);
+          const data = Object.fromEntries(formData.entries());
+          // Form data ready for backend submission
+
+        } catch (error) {
+          // Form submission error occurred
+          this.showToast('Something went wrong. Please try again.', 'error');
+        } finally {
+          this.submitBtn.disabled = false;
+          this.submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>Send Message';
+        }
+      }
+
+      showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300 ${
+          type === 'error' ? 'bg-red-500' : 'bg-primary'
+        }`;
+        toast.innerHTML = `
+          <div class="flex items-center">
+            <i class="fas fa-${type === 'error' ? 'exclamation-triangle' : 'info-circle'} mr-2" aria-hidden="true"></i>
+            ${message}
+          </div>
+        `;
+
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.classList.remove('translate-x-full');
+        }, 100);
+
+        setTimeout(() => {
+          toast.classList.add('translate-x-full');
+          setTimeout(() => {
+            document.body.removeChild(toast);
+          }, 300);
+        }, 5000);
+      }
+    }
+
+    // Live chat function
+    function openLiveChat() {
+      alert('Live chat feature coming soon! For now, please use email or phone support.');
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new ContactForm();
+      
+      // Setup live chat button
+      const liveChatBtn = document.getElementById('live-chat-btn');
+      if (liveChatBtn) {
+        liveChatBtn.addEventListener('click', openLiveChat);
+      }
+    });
+  </script>
+</body>
+</html> 

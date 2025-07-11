@@ -1,0 +1,71 @@
+{
+  "name": "PropGrid - Smart Real Estate Deal Alerts",
+  "short_name": "PropGrid",
+  "description": "Get handpicked real estate deals delivered to your inbox. AI-powered analysis finds the best investment opportunities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "/2zeilN5FnQ4boMLVI0qnMaQk248.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Deals",
+      "short_name": "Deals",
+      "description": "View your latest real estate deals",
+      "url": "/#deals",
+      "icons": [
+        {
+          "src": "/2zeilN5FnQ4boMLVI0qnMaQk248.svg",
+          "sizes": "any"
+        }
+      ]
+    },
+    {
+      "name": "Sign Up",
+      "short_name": "Sign Up",
+      "description": "Start receiving deal alerts",
+      "url": "/#signup",
+      "icons": [
+        {
+          "src": "/2zeilN5FnQ4boMLVI0qnMaQk248.svg",
+          "sizes": "any"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PropGrid - Real Estate Deal Alerts"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "web+propgrid",
+      "url": "/?deal=%s"
+    }
+  ]
+} 

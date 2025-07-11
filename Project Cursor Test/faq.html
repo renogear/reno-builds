@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - PropGrid</title>
+  <meta name="description" content="Frequently asked questions about PropGrid, the real estate deal alert platform.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <style>
+      body { font-family: 'Inter', system-ui, sans-serif; }
+      .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1); }
+      .accordion-content.open { max-height: 500px; }
+      .logo-min-size { min-width: 2.5rem; min-height: 2.5rem; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-40 transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-3">
+          <a href="/" class="flex items-center space-x-3 group focus-visible" aria-label="PropGrid Home">
+                            <img src="2zeilN5FnQ4boMLVI0qnMaQk248.svg" alt="PropGrid logo" class="w-10 h-10 object-contain logo-min-size"/>
+            <span class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">PropGrid</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8" role="menubar">
+          <a href="index.html#how-it-works" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">How It Works</a>
+          <a href="index.html#markets" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Markets</a>
+          <a href="index.html#pricing" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Pricing</a>
+          <a href="faq.html" class="text-primary font-semibold transition-colors focus-visible" role="menuitem">FAQ</a>
+          <a href="contact.html" class="text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Contact</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="index.html#signup" class="bg-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 focus-visible">
+            Get Started
+          </a>
+          <button class="md:hidden focus-visible" id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+            <i class="fas fa-bars text-gray-600 text-xl" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu" role="menu">
+      <div class="px-4 py-4 space-y-4">
+        <a href="index.html#how-it-works" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">How It Works</a>
+        <a href="index.html#markets" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Markets</a>
+        <a href="index.html#pricing" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Pricing</a>
+        <a href="faq.html" class="block text-primary font-semibold transition-colors focus-visible" role="menuitem">FAQ</a>
+        <a href="contact.html" class="block text-gray-600 hover:text-primary transition-colors font-medium focus-visible" role="menuitem">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-2xl mx-auto">
+    <div class="text-center mb-12">
+              <img src="2zeilN5FnQ4boMLVI0qnMaQk248.svg" alt="PropGrid logo" class="mx-auto mb-4 w-14 h-14 object-contain"/>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h1>
+      <p class="text-gray-600">Answers to common questions about PropGrid and our real estate deal alerts.</p>
+    </div>
+    <section class="space-y-4" id="faq-accordion">
+      <div class="border rounded-xl bg-white shadow-sm">
+        <button class="w-full flex justify-between items-center px-6 py-5 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary faq-accordion-btn" aria-expanded="false" aria-controls="faq-panel-1" id="faq-btn-1" data-target="faq-1">
+          How does PropGrid find real estate deals?
+          <i class="fas fa-chevron-down transition-transform duration-200"></i>
+        </button>
+        <div class="accordion-content px-6 pb-5 text-gray-700" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
+          PropGrid aggregates and analyzes listings from multiple sources, using a mix of automation and expert review to surface interesting opportunities. We focus on quality, not quantity.
+        </div>
+      </div>
+      <div class="border rounded-xl bg-white shadow-sm">
+        <button class="w-full flex justify-between items-center px-6 py-5 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary faq-accordion-btn" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2" data-target="faq-2">
+          How often will I receive deal alerts?
+          <i class="fas fa-chevron-down transition-transform duration-200"></i>
+        </button>
+        <div class="accordion-content px-6 pb-5 text-gray-700" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2">
+          You’ll receive alerts as soon as we find a deal that matches your preferences. We aim for quality over frequency—no spam, just relevant opportunities.
+        </div>
+      </div>
+      <div class="border rounded-xl bg-white shadow-sm">
+        <button class="w-full flex justify-between items-center px-6 py-5 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary faq-accordion-btn" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3" data-target="faq-3">
+          Can I customize the types of deals I get?
+          <i class="fas fa-chevron-down transition-transform duration-200"></i>
+        </button>
+        <div class="accordion-content px-6 pb-5 text-gray-700" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3">
+          Yes! When you sign up, you can specify your preferred markets and investment strategies. We’ll tailor alerts to your interests.
+        </div>
+      </div>
+      <div class="border rounded-xl bg-white shadow-sm">
+        <button class="w-full flex justify-between items-center px-6 py-5 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary faq-accordion-btn" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4" data-target="faq-4">
+          Is PropGrid free to use?
+          <i class="fas fa-chevron-down transition-transform duration-200"></i>
+        </button>
+        <div class="accordion-content px-6 pb-5 text-gray-700" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4">
+          You can get started for free. We may offer premium features in the future, but the core deal alerts are free for early users.
+        </div>
+      </div>
+      <div class="border rounded-xl bg-white shadow-sm">
+        <button class="w-full flex justify-between items-center px-6 py-5 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary faq-accordion-btn" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5" data-target="faq-5">
+          How do I unsubscribe or change my preferences?
+          <i class="fas fa-chevron-down transition-transform duration-200"></i>
+        </button>
+        <div class="accordion-content px-6 pb-5 text-gray-700" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5">
+          Every email includes a link to update your preferences or unsubscribe at any time. We respect your inbox and privacy.
+        </div>
+      </div>
+    </section>
+    <div class="mt-10 text-center">
+      <a href="index.html" class="inline-flex items-center text-primary font-medium hover:underline">
+        <i class="fas fa-arrow-left mr-2"></i> Back to Home
+      </a>
+    </div>
+  </main>
+  <footer class="bg-white border-t border-gray-100 py-8 text-center mt-12">
+    <div class="flex flex-col items-center justify-center gap-2">
+      <a href="/" class="flex items-center space-x-3 group focus-visible" aria-label="PropGrid Home">
+                  <img src="2zeilN5FnQ4boMLVI0qnMaQk248.svg" alt="PropGrid logo" class="w-8 h-8 object-contain mb-2"/>
+      </a>
+      <p class="text-sm text-gray-400">&copy; 2024 PropGrid. All rights reserved.</p>
+      <p class="text-xs text-gray-400">Contact: <a href="mailto:support@propgrid.com" class="text-primary hover:underline">support@propgrid.com</a></p>
+    </div>
+  </footer>
+  <script>
+    // FAQ Accordion functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const accordionButtons = document.querySelectorAll('.faq-accordion-btn');
+      
+      accordionButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleAccordion(button);
+        });
+      });
+      
+      // Ensure all answers are hidden on load
+      document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('#faq-accordion button').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    });
+    
+    function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      
+      // Close all
+      document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('#faq-accordion button').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('i').style.transform = '';
+      });
+      
+      // Open if not already
+      if (!expanded) {
+        content.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
+</body>
+</html> 

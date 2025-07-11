@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - PropGrid</title>
+    <meta name="description" content="You're currently offline. PropGrid will be back when you reconnect.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .offline-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
+        <!-- Logo -->
+        <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-home text-white text-2xl"></i>
+        </div>
+        
+        <!-- Offline Icon -->
+        <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 offline-animation">
+            <i class="fas fa-wifi-slash text-red-600 text-3xl"></i>
+        </div>
+        
+        <!-- Content -->
+        <h1 class="text-2xl font-bold text-gray-900 mb-4">You're Offline</h1>
+        <p class="text-gray-600 mb-6">
+            Don't worry! PropGrid will automatically reconnect when you're back online. 
+            Your deal alerts will continue to arrive once connected.
+        </p>
+        
+        <!-- Status -->
+        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <span>Checking connection...</span>
+            </div>
+        </div>
+        
+        <!-- Actions -->
+        <div class="space-y-3">
+            <button id="reload-btn" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                <i class="fas fa-redo mr-2"></i>
+                Try Again
+            </button>
+            
+            <button id="back-btn" class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Go Back
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="text-xs text-gray-500">
+                Need help? Contact us at 
+                <a href="mailto:support@propgrid.com" class="text-blue-600 hover:underline">support@propgrid.com</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Check connection status
+        function checkConnection() {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }
+
+        // Listen for online/offline events
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+
+        window.addEventListener('offline', () => {
+            // Already on offline page
+        });
+
+        // Check connection every 5 seconds
+        setInterval(checkConnection, 5000);
+
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            const reloadBtn = document.getElementById('reload-btn');
+            const backBtn = document.getElementById('back-btn');
+            
+            if (reloadBtn) {
+                reloadBtn.addEventListener('click', () => {
+                    reloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Checking...';
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                });
+            }
+            
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    window.history.back();
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

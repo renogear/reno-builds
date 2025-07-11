@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://propgrid.com/sitemap.xml
+
+# Disallow access to sensitive files
+Disallow: /.htaccess
+Disallow: /.htpasswd
+Disallow: /manifest.json
+Disallow: /sw.js
+Disallow: /deal-curation-n8n.json
+Disallow: /DealCurationForm.jsx
+Disallow: /OPTIMIZATION_SUMMARY.md
+Disallow: /README.md
+Disallow: /.DS_Store
+Disallow: /.cursor/
+Disallow: /.vscode/
+Disallow: /public/
+
+# Allow important pages
+Allow: /index.html
+Allow: /contact.html
+Allow: /faq.html
+Allow: /terms.html
+Allow: /privacy.html
+Allow: /404.html
+Allow: /2zeilN5FnQ4boMLVI0qnMaQk248.svg 
